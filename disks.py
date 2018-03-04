@@ -14,9 +14,9 @@ class Disk(object):
         print self._data
 
 
-class IOReportsList(object, list=[]):
+class IOReportsList(object):
     def __init__(self):
-        self._report_list = list
+        self._report_list = []
 
     def add_report(self, report):
         self._report_list.append(report)
@@ -24,10 +24,6 @@ class IOReportsList(object, list=[]):
     @property
     def report_list(self):
         return self._report_list
-
-    def trrrrr(self):
-        for i in self._report_list:
-            print 'trr'
 
 
 class IOReport(object):
@@ -39,7 +35,6 @@ class IOReport(object):
     @property
     def timestamp(self):
         return self._timestamp
-
 
     def add_disk(self, line):
         self._disks.append(Disk(line[0]))

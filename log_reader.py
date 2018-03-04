@@ -45,7 +45,7 @@ class LogReader(object):
         pass
 
     def parse(self):
-        report_list = IOReportsList([])
+        report_list = IOReportsList()
         current_report = None
 
         with open(self._log_file) as f:
@@ -68,10 +68,11 @@ class LogReader(object):
 
 if __name__ == '__main__':
     log_file = 'small_iostat_sample.txt'
-    my_report = IOReportsList(LogReader(log_file).parse())
-    stam = my_report.report_list
-    my_report.trrrrr()
-    # for r in my_report.report_list:
-    #     print r.timestamp
+    my_report = LogReader(log_file).parse()
+
+    for r in my_report.report_list:
+        print r.timestamp
+        for d in r.get_disks():
+            d.get_data()
 
 
