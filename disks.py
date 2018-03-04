@@ -14,9 +14,9 @@ class Disk(object):
         print self._data
 
 
-class IOReportsList(object, list=[]):
+class IOReportsList(object):
     def __init__(self):
-        self._report_list = list
+        self._report_list = []
 
     def add_report(self, report):
         self._report_list.append(report)

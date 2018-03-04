@@ -45,7 +45,7 @@ class LogReader(object):
         pass
 
     def parse(self):
-        report_list = IOReportsList([])
+        report_list = IOReportsList()
         current_report = None
 
         with open(self._log_file) as f:
