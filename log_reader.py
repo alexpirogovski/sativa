@@ -58,9 +58,8 @@ class LogReader(object):
                     elif is_garbage(line):
                         current_report = None
                     elif is_headers(line):
-                        l = split_line(line)
-                        del l[0]
-                        current_report.set_headers(l)
+                        # print split_line(line)[1:]
+                        current_report.set_headers(split_line(line)[1:])
                     else:
                         current_report.add_disk(split_line(line))
             return report_list
@@ -69,10 +68,10 @@ class LogReader(object):
 if __name__ == '__main__':
     log_file = 'small_iostat_sample.txt'
     my_report = LogReader(log_file).parse()
-
     for r in my_report.report_list:
         print r.timestamp
         for d in r.get_disks():
             d.get_data()
+
 
 
